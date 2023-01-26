@@ -1,12 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-interface ToDoInterface {
-  id: number;
-  message: string;
-  date: Date;
-  completed: boolean;
-}
+import { ToDoInterface } from "../utils/interfaces";
 
 export default function ToDo(): JSX.Element {
   const [allTasks, setAllTasks] = useState<ToDoInterface[]>([]);

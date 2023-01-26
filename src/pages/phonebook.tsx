@@ -1,24 +1,38 @@
-import { useState } from "react";
-import { isClassStaticBlockDeclaration } from "typescript";
-
-interface Iperson {
-  firstname: string;
-  secondname: string;
-  phonenumber: string;
-}
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { IDBphonenumber, Iphonenumber } from "../utils/interfaces";
 
 export default function PhoneBook(): JSX.Element {
-  const [personObj, setPersonObj] = useState<Iperson>({
+  const [personObj, setPersonObj] = useState<Iphonenumber>({
     firstname: "",
     secondname: "",
     phonenumber: "",
   });
-
   const [clicked, setClicked] = useState<boolean>(false);
-  const handleSubmit = () => {
-    console.log("handle submit entered");
-    //post request to db of person onj
+  const [allPhonebookEntries, setAllPhonebookEntries] =
+    useState<IDBphonenumber[]>();
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      const response = await axios.get("http://localhost:4000/phonebook/items");
+      const fetchedWholeObject = response.data;
+      const fetchedTasks = fetchedWholeObject.data;
+      // sets tasks to the data
+      setAllPhonebookEntries(fetchedTasks);
+    };
+    fetchAPI();
+  }, [allPhonebookEntries]);
+
+  const handleSubmit = async () => {
+    console.log("entered submit");
+    const response = await axios.post("http://localhost:4000/phonebook/items", {
+      first_name: personObj.firstname,
+      second_name: personObj.secondname,
+      phonenumber: personObj.phonenumber,
+    });
+    console.log(response, "submit made");
   };
+
   return (
     <>
       <button onClick={() => setClicked(!clicked)}> Add new entry </button>
@@ -65,6 +79,25 @@ export default function PhoneBook(): JSX.Element {
           </button>
         </form>
       )}
+      <div>
+        <table>
+          <tr>
+            <th>First Name:</th>
+            <th>Second Name:</th>
+            <th>Phonenumber:</th>
+          </tr>
+          {allPhonebookEntries &&
+            allPhonebookEntries.map((entry) => (
+              <>
+                <tr key={entry.id}>
+                  <td>{entry.first_name}</td>
+                  <td>{entry.second_name}</td>
+                  <td>{entry.phonenumber}</td>
+                </tr>
+              </>
+            ))}
+        </table>
+      </div>
     </>
   );
 }

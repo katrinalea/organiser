@@ -5,6 +5,7 @@ import PhoneBook from "./pages/phonebook";
 import ToDo from "./pages/todo";
 import Home from "./pages/home";
 import { useState } from "react";
+import "./app.css";
 
 function App(): JSX.Element {
   const [render, setRender] = useState<string>("home");
