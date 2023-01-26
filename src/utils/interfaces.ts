@@ -17,3 +17,22 @@ export interface ToDoInterface {
   date: Date;
   completed: boolean;
 }
+
+export interface IAddressEntry {
+  first_name: string;
+  second_name: string;
+  street_name: string;
+  house_number: string;
+  postcode: string;
+  town: string;
+}
+
+export interface IDBAddressEntry {
+  id: number;
+  first_name: string;
+  second_name: string;
+  street_name: string;
+  house_number: string;
+  postcode: string;
+  town: string;
+}
