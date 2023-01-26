@@ -35,6 +35,26 @@ export default function PhoneBook(): JSX.Element {
 
   return (
     <>
+      <h1> Phone Book</h1>
+      <div>
+        <table>
+          <tr>
+            <th>First Name:</th>
+            <th>Second Name:</th>
+            <th>Phonenumber:</th>
+          </tr>
+          {allPhonebookEntries &&
+            allPhonebookEntries.map((entry) => (
+              <>
+                <tr key={entry.id}>
+                  <td>{entry.first_name}</td>
+                  <td>{entry.second_name}</td>
+                  <td>{entry.phonenumber}</td>
+                </tr>
+              </>
+            ))}
+        </table>
+      </div>
       <button onClick={() => setClicked(!clicked)}> Add new entry </button>
       {clicked && (
         <form
@@ -79,25 +99,6 @@ export default function PhoneBook(): JSX.Element {
           </button>
         </form>
       )}
-      <div>
-        <table>
-          <tr>
-            <th>First Name:</th>
-            <th>Second Name:</th>
-            <th>Phonenumber:</th>
-          </tr>
-          {allPhonebookEntries &&
-            allPhonebookEntries.map((entry) => (
-              <>
-                <tr key={entry.id}>
-                  <td>{entry.first_name}</td>
-                  <td>{entry.second_name}</td>
-                  <td>{entry.phonenumber}</td>
-                </tr>
-              </>
-            ))}
-        </table>
-      </div>
     </>
   );
 }

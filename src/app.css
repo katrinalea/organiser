@@ -1,6 +1,43 @@
-table,
 tr,
 td,
 th {
   border: solid black 1px;
+  border-collapse: collapse;
+}
+table {
+  border: solid black 1px;
+  border-collapse: collapse;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navBar {
+  position: absolute;
+  left: 3%;
+  display: flex;
+  padding: 10px;
+}
+
+button {
+  margin: 2px;
+  background-color: white;
+  border: solid 1px black;
+  cursor: pointer;
+  height: 40px;
+  width: 70px;
+  border-radius: 10%;
+  margin-bottom: 5%;
+}
+
+button:hover {
+  background-color: pink;
+}
+
+button:active {
+  background-color: pink;
+}
+
+body {
+  text-align: center;
 }

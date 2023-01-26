@@ -46,6 +46,33 @@ export default function AddressBook(): JSX.Element {
 
   return (
     <>
+      <h1> Address book </h1>
+
+      <div>
+        <table>
+          <tr>
+            <th>First Name:</th>
+            <th>Second Name:</th>
+            <th>Address:</th>
+            <th>Postcode:</th>
+            <th>Town:</th>
+          </tr>
+          {allAddressBookEntries &&
+            allAddressBookEntries.map((entry) => (
+              <>
+                <tr key={entry.id}>
+                  <td>{entry.first_name}</td>
+                  <td>{entry.second_name}</td>
+                  <td>
+                    {entry.street_name}, {entry.house_number}
+                  </td>
+                  <td>{entry.postcode}</td>
+                  <td>{entry.town}</td>
+                </tr>
+              </>
+            ))}
+        </table>
+      </div>
       <button onClick={() => setClicked(!clicked)}> Add new entry </button>
       {clicked && (
         <form
@@ -53,7 +80,7 @@ export default function AddressBook(): JSX.Element {
             e.preventDefault();
           }} //prevents a page reload
         >
-          <p> Enter details to add them to the Address book</p>
+          <h2> Enter details to add them to the Address book</h2>
           <p> First name:</p>
           <input
             id="name"
@@ -115,31 +142,6 @@ export default function AddressBook(): JSX.Element {
           </button>
         </form>
       )}
-      <div>
-        <table>
-          <tr>
-            <th>First Name:</th>
-            <th>Second Name:</th>
-            <th>Address:</th>
-            <th>Postcode:</th>
-            <th>Town:</th>
-          </tr>
-          {allAddressBookEntries &&
-            allAddressBookEntries.map((entry) => (
-              <>
-                <tr key={entry.id}>
-                  <td>{entry.first_name}</td>
-                  <td>{entry.second_name}</td>
-                  <td>
-                    {entry.street_name}, {entry.house_number}
-                  </td>
-                  <td>{entry.postcode}</td>
-                  <td>{entry.town}</td>
-                </tr>
-              </>
-            ))}
-        </table>
-      </div>
     </>
   );
 }

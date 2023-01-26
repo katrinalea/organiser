@@ -14,16 +14,19 @@ function App(): JSX.Element {
   };
 
   return (
-    <div>
-      <NavBar setRender={handleRender} />
-      <>
+    <>
+      <div>
+        <NavBar setRender={handleRender} />
+        <br />
+      </div>
+      <div>
         {render === "home" && <Home />}
         {render === "address" && <AddressBook />}
         {render === "notes" && <Notes />}
         {render === "phone" && <PhoneBook />}
         {render === "to-do" && <ToDo />}
-      </>
-    </div>
+      </div>
+    </>
   );
 }
 
