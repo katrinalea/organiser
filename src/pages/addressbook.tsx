@@ -50,25 +50,29 @@ export default function AddressBook(): JSX.Element {
 
       <div>
         <table>
-          <tr>
-            <th>First Name:</th>
-            <th>Second Name:</th>
-            <th>Address:</th>
-            <th>Postcode:</th>
-            <th>Town:</th>
-          </tr>
+          <thead>
+            <tr>
+              <th>First Name:</th>
+              <th>Second Name:</th>
+              <th>Address:</th>
+              <th>Postcode:</th>
+              <th>Town:</th>
+            </tr>
+          </thead>
           {allAddressBookEntries &&
             allAddressBookEntries.map((entry) => (
               <>
-                <tr key={entry.id}>
-                  <td>{entry.first_name}</td>
-                  <td>{entry.second_name}</td>
-                  <td>
-                    {entry.street_name}, {entry.house_number}
-                  </td>
-                  <td>{entry.postcode}</td>
-                  <td>{entry.town}</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>{entry.first_name}</td>
+                    <td>{entry.second_name}</td>
+                    <td>
+                      {entry.street_name}, {entry.house_number}
+                    </td>
+                    <td>{entry.postcode}</td>
+                    <td>{entry.town}</td>
+                  </tr>
+                </tbody>
               </>
             ))}
         </table>

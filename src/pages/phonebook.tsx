@@ -38,19 +38,23 @@ export default function PhoneBook(): JSX.Element {
       <h1> Phone Book</h1>
       <div>
         <table>
-          <tr>
-            <th>First Name:</th>
-            <th>Second Name:</th>
-            <th>Phonenumber:</th>
-          </tr>
+          <thead>
+            <tr>
+              <th>First Name:</th>
+              <th>Second Name:</th>
+              <th>Phonenumber:</th>
+            </tr>
+          </thead>
           {allPhonebookEntries &&
             allPhonebookEntries.map((entry) => (
               <>
-                <tr key={entry.id}>
-                  <td>{entry.first_name}</td>
-                  <td>{entry.second_name}</td>
-                  <td>{entry.phonenumber}</td>
-                </tr>
+                <tbody key={entry.id}>
+                  <tr>
+                    <td>{entry.first_name}</td>
+                    <td>{entry.second_name}</td>
+                    <td>{entry.phonenumber}</td>
+                  </tr>
+                </tbody>
               </>
             ))}
         </table>

@@ -36,3 +36,13 @@ export interface IDBAddressEntry {
   postcode: string;
   town: string;
 }
+
+export interface INoteObj {
+  title: string;
+  message: string;
+}
+export interface IDBNoteObj {
+  id: number;
+  title: string;
+  message: string;
+}
