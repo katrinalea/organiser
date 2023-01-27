@@ -34,6 +34,14 @@ export default function Notes(): JSX.Element {
     <div>
       <h1> Notes Page</h1>
       <button onClick={() => setClicked(!clicked)}> Add new note </button>
+
+      {allNotes &&
+        allNotes.map((note) => (
+          <li key={note.id}>
+            <h3>{note.title}</h3>
+            <p>{note.message}</p>
+          </li>
+        ))}
       {clicked && (
         <div>
           <p> Note title: </p>
@@ -59,13 +67,6 @@ export default function Notes(): JSX.Element {
           </div>
         </div>
       )}
-      {allNotes &&
-        allNotes.map((note) => (
-          <li key={note.id}>
-            <h3>{note.title}</h3>
-            <p>{note.message}</p>
-          </li>
-        ))}
     </div>
   );
 }

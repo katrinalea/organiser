@@ -46,3 +46,8 @@ export interface IDBNoteObj {
   title: string;
   message: string;
 }
+
+export interface IQuote {
+  quote: string;
+  author: string;
+}

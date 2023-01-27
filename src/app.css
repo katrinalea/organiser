@@ -41,3 +41,17 @@ button:active {
 body {
   text-align: center;
 }
+
+.navbar-datetime {
+  position: absolute;
+  right: 3%;
+  padding: 10px;
+}
+
+.dateTime {
+  font-size: xx-large;
+  color: pink;
+  font-weight: bolder;
+  padding: 10px;
+  font-style: bold;
+}
