@@ -4,29 +4,22 @@ import Notes from "./pages/notes";
 import PhoneBook from "./pages/phonebook";
 import ToDo from "./pages/todo";
 import Home from "./pages/home";
-import { useState } from "react";
 import "./app.css";
+import { Route, Routes } from "react-router-dom";
 
 function App(): JSX.Element {
-  const [render, setRender] = useState<string>("home");
-  const handleRender = (page: string) => {
-    setRender(page);
-  };
-
   return (
-    <>
-      <div>
-        <NavBar setRender={handleRender} />
-        <br />
-      </div>
-      <div>
-        {render === "home" && <Home />}
-        {render === "address" && <AddressBook />}
-        {render === "notes" && <Notes />}
-        {render === "phone" && <PhoneBook />}
-        {render === "to-do" && <ToDo />}
-      </div>
-    </>
+    <div>
+      <NavBar />
+      <br />
+      <Routes>
+        <Route path="" element={<Home />} />
+        <Route path="/addressbook" element={<AddressBook />} />
+        <Route path="/notes" element={<Notes />} />
+        <Route path="/phonebook" element={<PhoneBook />} />
+        <Route path="/todo" element={<ToDo />} />
+      </Routes>
+    </div>
   );
 }
 

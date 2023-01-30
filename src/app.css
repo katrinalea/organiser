@@ -30,6 +30,19 @@ button {
   margin-bottom: 5%;
 }
 
+a {
+  margin: 3px;
+  background-color: white;
+  cursor: pointer;
+  margin-bottom: 5%;
+  justify-content: center;
+  padding: auto;
+}
+
+a:hover {
+  color: pink;
+}
+
 button:hover {
   background-color: pink;
 }
