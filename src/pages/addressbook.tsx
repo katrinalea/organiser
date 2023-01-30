@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { IAddressEntry, IDBAddressEntry } from "../utils/interfaces";
+import { url } from "../App";
 
 export default function AddressBook(): JSX.Element {
   const [addressObj, setAddressObj] = useState<IAddressEntry>({
@@ -17,9 +18,7 @@ export default function AddressBook(): JSX.Element {
 
   useEffect(() => {
     const fetchAPI = async () => {
-      const response = await axios.get(
-        "http://localhost:4000/addressbook/entries"
-      );
+      const response = await axios.get(`${url}/entries`);
       const fetchedWholeObject = response.data;
       const fetchedTasks = fetchedWholeObject.data;
       // sets tasks to the data
@@ -30,17 +29,14 @@ export default function AddressBook(): JSX.Element {
 
   const handleSubmit = async () => {
     console.log("entered submit");
-    const response = await axios.post(
-      "http://localhost:4000/addressbook/entries",
-      {
-        first_name: addressObj.first_name,
-        second_name: addressObj.second_name,
-        street_name: addressObj.street_name,
-        house_number: addressObj.house_number,
-        postcode: addressObj.postcode,
-        town: addressObj.town,
-      }
-    );
+    const response = await axios.post(`${url}/addressbook/entries`, {
+      first_name: addressObj.first_name,
+      second_name: addressObj.second_name,
+      street_name: addressObj.street_name,
+      house_number: addressObj.house_number,
+      postcode: addressObj.postcode,
+      town: addressObj.town,
+    });
     console.log(response, "submit made");
   };
 

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { ToDoInterface } from "../utils/interfaces";
+import { url } from "../App";
 
 export default function ToDo(): JSX.Element {
   const [allTasks, setAllTasks] = useState<ToDoInterface[]>([]);
@@ -13,7 +14,7 @@ export default function ToDo(): JSX.Element {
   useEffect(() => {
     const fetchAPI = async () => {
       //using axios to fetch the API, using a get command, assigning the vraible 'response' to theAPI info
-      const response = await axios.get("http://localhost:4000/todo/items");
+      const response = await axios.get(`${url}/todo/items`);
       // assigning fetchedTasks to the API data, specifically data
       const fetchedWholeObject = response.data;
       const fetchedTasks = fetchedWholeObject.data;
@@ -27,9 +28,7 @@ export default function ToDo(): JSX.Element {
   useEffect(() => {
     const fetchAPI = async () => {
       //using axios to fetch the API, using a get command, assigning the vraible 'response' to theAPI info
-      const response = await axios.get(
-        "http://localhost:4000/todo/items/completed"
-      );
+      const response = await axios.get(`${url}/todo/items/completed`);
 
       // assigning fetchedTasks to the API data, specifically data
       const fetchedWholeObject = response.data;
@@ -42,7 +41,7 @@ export default function ToDo(): JSX.Element {
 
   //adds an item to the all items api
   const handleAddItem = async (item: string) => {
-    const response = await axios.post("http://localhost:4000/todo/items", {
+    const response = await axios.post(`${url}/todo/items`, {
       message: item,
       completed: "false",
     });
@@ -52,25 +51,25 @@ export default function ToDo(): JSX.Element {
 
   // deletes the item from the all items api
   const handleDeleteItem = async (number: number) => {
-    await axios.delete(`http://localhost:4000/todo/items/${number}`, {
+    await axios.delete(`${url}/todo/items/${number}`, {
       data: { id: number },
     });
   };
 
   // deleting the task from the all items api, then posts to the completed api
   const handleCompletedItem = async (number: number) => {
-    await axios.patch(`http://localhost:4000/todo/items/${number}`, {
+    await axios.patch(`${url}/todo/items/${number}`, {
       id: number,
     });
   };
 
   const handleRefreshCompleted = async () => {
-    await axios.delete("http://localhost:4000/todo/items/completed");
+    await axios.delete(`${url}/todo/items/completed`);
   }; //working
 
   const handleEditTaskItem = async (id: number, textchange: string) => {
     console.log("editing entered");
-    const response = await axios.patch(`http://localhost:4000/todo/update`, {
+    const response = await axios.patch(`${url}/todo/update`, {
       id: id,
       message: textchange,
     });

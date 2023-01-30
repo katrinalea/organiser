@@ -7,6 +7,11 @@ import Home from "./pages/home";
 import "./app.css";
 import { Route, Routes } from "react-router-dom";
 
+export const url =
+  process.env.NODE_ENV !== "production"
+    ? "https://organiser.onrender.com"
+    : "http://localhost:4000";
+
 function App(): JSX.Element {
   return (
     <div>

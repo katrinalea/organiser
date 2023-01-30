@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { IDBNoteObj, INoteObj } from "../utils/interfaces";
+import { url } from "../App";
 
 export default function Notes(): JSX.Element {
   const [clicked, setClicked] = useState<boolean>(false);
@@ -12,7 +13,7 @@ export default function Notes(): JSX.Element {
 
   useEffect(() => {
     const fetchAPI = async () => {
-      const response = await axios.get("http://localhost:4000/notes/items");
+      const response = await axios.get(`${url}/notes/items`);
       const fetchedWholeObject = response.data;
       const fetchedTasks = fetchedWholeObject.data;
       // sets tasks to the data
@@ -23,7 +24,7 @@ export default function Notes(): JSX.Element {
 
   const handleSubmit = async () => {
     console.log("entered submit");
-    const response = await axios.post("http://localhost:4000/notes/items", {
+    const response = await axios.post(`${url}/notes/items`, {
       title: wholeNoteObj.title,
       message: wholeNoteObj.message,
     });
