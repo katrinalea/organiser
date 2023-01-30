@@ -18,6 +18,7 @@ function App(): JSX.Element {
         <Route path="/notes" element={<Notes />} />
         <Route path="/phonebook" element={<PhoneBook />} />
         <Route path="/todo" element={<ToDo />} />
+        <Route path="*" element={<p>NotFound!</p>} />
       </Routes>
     </div>
   );
