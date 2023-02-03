@@ -33,7 +33,7 @@ export default function Notes(): JSX.Element {
 
   return (
     <div>
-      <h1> Notes Page</h1>
+      <h1>Notes Page</h1>
       <button onClick={() => setClicked(!clicked)}> Add new note </button>
 
       {allNotes &&
