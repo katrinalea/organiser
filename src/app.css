@@ -69,7 +69,6 @@ body {
   font-style: bold;
 }
 
-
 .scroll-text {
   text-align: center;
   font-size: x-large;
@@ -78,18 +77,20 @@ body {
   -moz-transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
-  
+
   -moz-animation: my-animation 40s linear infinite;
   -webkit-animation: my-animation 40s linear infinite;
   animation: my-animation 40s linear infinite;
 }
 
-
-
 /* for Chrome */
 @-webkit-keyframes my-animation {
-  from { -webkit-transform: translateX(25%); }
-  to { -webkit-transform: translateX(-25%); }
+  from {
+    -webkit-transform: translateX(25%);
+  }
+  to {
+    -webkit-transform: translateX(-25%);
+  }
 }
 
 @keyframes my-animation {
