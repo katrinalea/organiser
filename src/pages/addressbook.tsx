@@ -29,21 +29,23 @@ export default function AddressBook(): JSX.Element {
 
   const handleSubmit = async () => {
     console.log("entered submit");
-    if (addressObj.first_name.length > 1 &&
-       addressObj.street_name.length > 1 &&
-      addressObj.house_number) {
-    const response = await axios.post(`${url}/addressbook/entries`, {
-      first_name: addressObj.first_name,
-      second_name: addressObj.second_name,
-      street_name: addressObj.street_name,
-      house_number: addressObj.house_number,
-      postcode: addressObj.postcode,
-      town: addressObj.town,
-    });
-      
-    console.log(response, "submit made");
+    if (
+      addressObj.first_name.length > 1 &&
+      addressObj.street_name.length > 1 &&
+      addressObj.house_number
+    ) {
+      const response = await axios.post(`${url}/addressbook/entries`, {
+        first_name: addressObj.first_name,
+        second_name: addressObj.second_name,
+        street_name: addressObj.street_name,
+        house_number: addressObj.house_number,
+        postcode: addressObj.postcode,
+        town: addressObj.town,
+      });
+
+      console.log(response, "submit made");
     } else {
-      window.alert("Must have * feilds completed")
+      window.alert("Must have * feilds completed");
     }
   };
 
