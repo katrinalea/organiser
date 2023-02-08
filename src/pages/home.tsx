@@ -3,27 +3,43 @@ import { useEffect, useState } from "react";
 import { url } from "../App";
 import { DateTime } from "../components/date-time";
 import { IQuote } from "../utils/interfaces";
+import { generateRandomNumber } from "../utils/randomNumber";
 
 export default function Home(): JSX.Element {
-  const [randomQuote, setRandomQuote] = useState<IQuote[]>();
+  
+  const [allQuotes, setAllQuotes] = useState<IQuote[]>();
+  const [randomQuote, setRandomQuote] = useState<IQuote | undefined>();
+  
   console.log("random quote", randomQuote);
+
   useEffect(() => {
     const fetchAPI = async () => {
       const response = await axios.get(`${url}/quotes`);
       const fetchedWholeObject = response.data;
-      const fetchedQuotes = fetchedWholeObject.data;
-      setRandomQuote(fetchedQuotes);
-    };
+      const fetchedQuotes: IQuote[] = fetchedWholeObject.data;
+      setAllQuotes(fetchedQuotes);
+    }
     fetchAPI();
-  }, [randomQuote]);
+  }, [])
+
+  useEffect(() => {
+    allQuotes && setRandomQuote(allQuotes[generateRandomNumber(0, allQuotes.length -1)])
+    const timer = setInterval(() => 
+    (allQuotes && setRandomQuote(allQuotes[generateRandomNumber(0, allQuotes.length -1)])), 40000)
+    return function cleanup() {
+      clearInterval(timer);
+    };
+  }, [allQuotes])
+
 
   return (
     <div>
       <h1> Organise your life ! </h1>
       {randomQuote && (
-        <p>
+        <p className = "scroll-text">
           {" "}
-          {randomQuote[0].quote} Author: {randomQuote[0].author}
+          {randomQuote.quote} <br />
+          Author: {randomQuote.author}
         </p>
       )}
       <div className="dateTime">
