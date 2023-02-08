@@ -8,7 +8,7 @@ import "./app.css";
 import { Route, Routes } from "react-router-dom";
 
 export const url =
-  process.env.NODE_ENV !== "production"
+  process.env.NODE_ENV === "production"
     ? "https://organiser.onrender.com"
     : "http://localhost:4000";
 

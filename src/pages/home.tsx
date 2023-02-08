@@ -1,26 +1,21 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { url } from "../App";
 import { DateTime } from "../components/date-time";
 import { IQuote } from "../utils/interfaces";
-import XMLParser from "react-xml-parser";
 
 export default function Home(): JSX.Element {
-  const [randomQuote, setRandomQuote] = useState<IQuote>();
+  const [randomQuote, setRandomQuote] = useState<IQuote[]>();
   console.log("random quote", randomQuote);
   useEffect(() => {
-    const fetchQuotes = async () => {
-      try {
-        const response = await fetch("https://quotes.rest/qod?language=en", {
-          mode: "no-cors",
-        });
-        const body: IQuote = await XMLParser(response);
-        console.log(body, "json body");
-        setRandomQuote(body);
-      } catch (err) {
-        console.log("fetch failed");
-      }
+    const fetchAPI = async () => {
+      const response = await axios.get(`${url}/quotes`);
+      const fetchedWholeObject = response.data;
+      const fetchedQuotes = fetchedWholeObject.data;
+      setRandomQuote(fetchedQuotes);
     };
-    fetchQuotes();
-  }, []);
+    fetchAPI();
+  }, [randomQuote]);
 
   return (
     <div>
@@ -28,7 +23,7 @@ export default function Home(): JSX.Element {
       {randomQuote && (
         <p>
           {" "}
-          {randomQuote.quote} Author: {randomQuote.author}
+          {randomQuote[0].quote} Author: {randomQuote[0].author}
         </p>
       )}
       <div className="dateTime">
