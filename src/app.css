@@ -1,8 +1,10 @@
 tr,
 td,
 th {
-  border: solid black 1px;
+  border: solid #dc88c2 1px;
   border-collapse: collapse;
+  padding: 8px;
+  text-transform: capitalize;
 }
 table {
   border: solid black 1px;
@@ -10,6 +12,16 @@ table {
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+h1 {
+  font-size: xx-large;
+  font-size: 80px;
+}
+
+body {
+  background-color: rgb(0, 0, 0);
+  color:#dc88c2
 }
 
 .navBar {
@@ -32,6 +44,12 @@ button {
   width: 70px;
   border-radius: 10%;
   margin-bottom: 5%;
+}
+
+input {
+  border-radius: 5px;
+  height: 20px;
+  width: 200px
 }
 
 a {

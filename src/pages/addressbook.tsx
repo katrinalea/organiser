@@ -29,6 +29,9 @@ export default function AddressBook(): JSX.Element {
 
   const handleSubmit = async () => {
     console.log("entered submit");
+    if (addressObj.first_name.length > 1 &&
+       addressObj.street_name.length > 1 &&
+      addressObj.house_number) {
     const response = await axios.post(`${url}/addressbook/entries`, {
       first_name: addressObj.first_name,
       second_name: addressObj.second_name,
@@ -37,7 +40,11 @@ export default function AddressBook(): JSX.Element {
       postcode: addressObj.postcode,
       town: addressObj.town,
     });
+      
     console.log(response, "submit made");
+    } else {
+      window.alert("Must have * feilds completed")
+    }
   };
 
   return (
@@ -81,7 +88,7 @@ export default function AddressBook(): JSX.Element {
           }} //prevents a page reload
         >
           <h2> Enter details to add them to the Address book</h2>
-          <p> First name:</p>
+          <p> First name: *</p>
           <input
             id="name"
             type="text"
@@ -100,7 +107,7 @@ export default function AddressBook(): JSX.Element {
               setAddressObj({ ...addressObj, second_name: e.target.value })
             }
           />
-          <p> Street name:</p>
+          <p> Street name: *</p>
           <input
             type="text"
             placeholder="Street Name"
@@ -109,7 +116,7 @@ export default function AddressBook(): JSX.Element {
             }
           />
           <br />
-          <p> House number:</p>
+          <p> House number: *</p>
           <input
             type="text"
             placeholder="House number"
