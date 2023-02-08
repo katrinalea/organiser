@@ -30,7 +30,7 @@ export default function Home(): JSX.Element {
         setRandomQuote(
           allQuotes[generateRandomNumber(0, allQuotes.length - 1)]
         ),
-      40000
+      30000
     );
     return function cleanup() {
       clearInterval(timer);

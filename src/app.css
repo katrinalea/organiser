@@ -19,6 +19,10 @@ table {
   padding: 10px;
 }
 
+li {
+  list-style-type:none
+}
+
 button {
   margin: 2px;
   background-color: white;
@@ -31,12 +35,19 @@ button {
 }
 
 a {
-  margin: 3px;
-  background-color: white;
+  margin: 1px;
   cursor: pointer;
   margin-bottom: 5%;
-  justify-content: center;
-  padding: auto;
+  display: block;
+  width: 85px;
+  height: 25px;
+  background: #dc88c2;
+  padding: 10px;
+  justify-content: center ;
+  border-radius: 5px;
+  color: white;
+  line-height: 25px;
+  text-decoration: none;
 }
 
 a:hover {
@@ -74,13 +85,13 @@ body {
   font-size: x-large;
 
   /* animation properties */
-  -moz-transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
+  -moz-transform: translateX(-25%);
+  -webkit-transform: translateX(-25%);
+  transform: translateX(-25%);
 
-  -moz-animation: my-animation 40s linear infinite;
-  -webkit-animation: my-animation 40s linear infinite;
-  animation: my-animation 40s linear infinite;
+  -moz-animation: my-animation 30s linear infinite;
+  -webkit-animation: my-animation 30s linear infinite;
+  animation: my-animation 30s linear infinite;
 }
 
 /* for Chrome */
